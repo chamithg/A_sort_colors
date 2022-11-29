@@ -4,19 +4,26 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        runner = 0
+        left = 0
+        right = len(nums)-1
+        i = 0
         
-        while runner< len(nums):
-            if nums[runner] == 0:
-                nums.pop(runner)
-                nums.insert(0,0)
-                runner +=1
-            elif nums[runner] == 2:
-                nums.append(2)
-                nums.pop(runner)
-                # runner +=1
-            else:
-                runner +=1
+        def swap(x,y):
+            tmp = nums[x]
+            nums [x] = nums [y]
+            nums [y] = tmp
+        
+        while i <= right:
+            if nums[i]== 0:
+                swap(i,left)
+                left +=1
+            elif nums[i]== 2:
+                swap(i,right)
+                right -= 1
+                i -=1
+            
+            i+=1
+            
         
         
         return nums
